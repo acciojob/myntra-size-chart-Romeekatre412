@@ -1,39 +1,99 @@
-   body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
+
+    :root{
+      --border:#bdbdbd;
+      --header-start:#c24b4b;
+      --header-end:#e28b8b;
+      --row-even:#f7dede;
+      --row-data:#f3f3f3;
+      --accent:#d9d9d9;
+      --text:#222;
+      --table-width:720px;
     }
 
-    h1 {
-      font-size: 22px;
-      color: #333;
+    body{
+      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color:var(--text);
+      padding:28px;
+      background: #fff;
     }
 
-    table {
-      border-collapse: collapse;
-      width: 60%;
-      margin-top: 20px;
+    .container{
+      max-width:900px;
+      margin:0 auto;
     }
 
-    th, td {
-      border: 1px solid #ccc;
-      padding: 8px 12px;
-      text-align: center;
+    h1{ font-size:1.5rem; margin:0 0 14px; }
+
+    .chart-wrap{
+      margin-top:18px;
+      padding:14px;
     }
 
-    thead th {
-      background-color: #a94442;
-      color: white;
+    /* Table styling */
+    .size-chart{
+      width:var(--table-width);
+      border-collapse:collapse;
+      border-spacing:0;
+      margin:12px 0 24px;
+      font-size:14px;
     }
 
-    tbody th {
-      text-align: left;
-      background-color: #f8d7da;
+    .size-chart thead th{
+      background: linear-gradient(180deg, var(--header-start), var(--header-end));
+      color:white;
+      padding:8px 10px;
+      text-align:left;
+      border:1px solid var(--border);
+      font-weight:700;
     }
 
-    tr:nth-child(even) {
-      background-color: #f9f9f9;
+    /* Make first header cell (Part) align slightly different */
+    .size-chart thead th.part {
+      width:160px;
     }
 
-    tr:hover {
-      background-color: #f1f1f1;
+    .size-chart tbody td{
+      border:1px solid var(--border);
+      padding:8px 10px;
+      text-align:left;
+      background:var(--row-data);
+    }
+
+    /* Slight tinting for the first column (row labels) */
+    .size-chart tbody th {
+      background: #f4cccc;
+      font-weight:700;
+      padding:8px 10px;
+      border:1px solid var(--border);
+      text-align:left;
+      width:160px;
+    }
+
+    /* Row striping to visually match sample */
+    .size-chart tbody tr:nth-child(1) td { background:#f6bebe; } /* Waist row - pink */
+    .size-chart tbody tr:nth-child(2) td { background:#f3cfcf; } /* Chest row - slightly different pink */
+    .size-chart tbody tr:nth-child(3) td { background:#e9ecef; } /* Sleeve row - grey */
+
+    /* center numeric cells */
+    .size-chart tbody td.numeric {
+      text-align:center;
+      font-weight:600;
+    }
+
+    /* thin grid lines outside */
+    .size-chart {
+      box-shadow: inset 0 0 0 1px var(--accent);
+    }
+
+    /* responsive */
+    @media (max-width:760px){
+      .size-chart{ width:100%; font-size:13px; }
+    }
+
+    /* caption styling */
+    caption{
+      caption-side:top;
+      text-align:left;
+      font-weight:700;
+      padding-bottom:8px;
     }
